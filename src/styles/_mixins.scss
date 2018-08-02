@@ -48,3 +48,33 @@
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
+
+@mixin hover-effect {
+  position: relative;
+  padding: 8px;
+  &::before, &::after {
+    content: "";
+    transform: skew(-25deg);
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 0;
+    left: auto;
+    height: 5px;
+    z-index: -1;
+  }
+  &::before {
+    background: $main-color;
+    transition: all .25s cubic-bezier(.694,.048,.335,1) .15s;
+  } 
+  &::after {
+    background: $light-color;
+    transition: all .25s cubic-bezier(.694,.048,.335,1);
+  }
+  @include events {
+    &::before, &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

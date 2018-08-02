@@ -11,9 +11,11 @@
 .logo {
   text-decoration: none;
   color: $black;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 18px;
   z-index: 999;
   transition: all .4s cubic-bezier(0, 1, 0.5, 1) .5s;
+  @include hover-effect;
   &--active {
     color: $white;
   }
@@ -140,7 +142,7 @@
       right: 0;
       opacity: 1;
       padding: 0;
-      margin-right: 30px;
+      margin-right: 45px;
       &:last-child {
         margin-right: 0;
       }
@@ -155,41 +157,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     padding: 15px;
-    &::before, &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: auto;
-      width: 0;
-      height: 100%;
-      z-index: -1;
-    }
-    &::before {
-      background: #a6ed8e;
-      transition: all .3s cubic-bezier(.694,.048,.335,1) .2s;
-    } 
-    &::after {
-      background: #f2f2f0;
-      transition: all .3s cubic-bezier(.694,.048,.335,1);
-    }
-    @include events {
-      &::before, &::after {
-        width: 100%;
-        left: 0;
-      }
-    }
     @include respond-to(md) {
       color: $black;
       letter-spacing: 0;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 16px;
-      padding: 8px 15px;
+      @include hover-effect;
     }
     &--active {
-      border-bottom: 3px solid #a6ed8e;
+      &::after {
+        width: 100%;
+      }
     }
   }
 }
